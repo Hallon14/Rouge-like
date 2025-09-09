@@ -5,23 +5,20 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private ClassType classType;
-    [SerializeField] private Animator animator;
     private PlayerInputActions playerInputActions;
     private RougeScript rougeScript;
     private BruiserScript bruiserScript;
     private MageScript mageScript;
     private PriestScript priestScript;
-
     private float gravity = -9.8f;
     private UnityEngine.Vector3 direction;
+    public Vector2 inputVector;
 
     void Awake()
     {
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
         playerInputActions.Player.Jump.performed += Jump;
-
-        
 
 
         rougeScript = GetComponent<RougeScript>();
@@ -37,17 +34,10 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector2 inputVector = playerInputActions.Player.Movement.ReadValue<Vector2>();
-        //ANIMATIONS
-        if (inputVector == new Vector2(0, 0))
-        {
-            animator.SetBool("IsRunning", false);
-        }
-        else
-        {
-            animator.SetBool("IsRunning", true);
-        }
-        //Flipping Sprite
+        inputVector = playerInputActions.Player.Movement.ReadValue<Vector2>();
+
+
+        //Flipping Sprite - input less than 0 indicates movement to the left
         if (inputVector.x < 0)
         {
             transform.localScale = new Vector3(-3, 3, 3);
@@ -61,7 +51,6 @@ public class PlayerController : MonoBehaviour
         switch (classType)
         {
             case ClassType.ROUGE:
-                //rougeScript.body.AddForce(new Vector3(inputVector.x, inputVector.y).normalized * rougeScript.MoveSpeed, ForceMode2D.Force);
                 rougeScript.body.linearVelocityX= inputVector.x * rougeScript.MoveSpeed;
                 return;
         }
@@ -78,7 +67,8 @@ public class PlayerController : MonoBehaviour
                     return;
 
                 case ClassType.ROUGE:
-                    rougeScript.body.AddForce(UnityEngine.Vector3.up * rougeScript.jumpForce);
+                    //rougeScript.body.AddForce(UnityEngine.Vector3.up * rougeScript.jumpForce);
+                    rougeScript.body.linearVelocityY = rougeScript.jumpForce;
                     return;
 
                 case ClassType.MAGE:

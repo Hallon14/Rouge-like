@@ -16,8 +16,8 @@ public class ParentPlayerClass : MonoBehaviour
     // Physics
 
     public Rigidbody2D body;
-    public UnityEngine.Vector3 direction;
-    public float Gravity = -9.8f;
+  
+
 
     void Awake()
     {
@@ -39,12 +39,7 @@ public class ParentPlayerClass : MonoBehaviour
         Debug.Log("Damageing Spell");
     }
 
-    public void Update()
-    {
-        direction.y += Gravity * Time.deltaTime;
-        body.AddForce(direction * Time.deltaTime);
-        
-    }
+
 
 }
 

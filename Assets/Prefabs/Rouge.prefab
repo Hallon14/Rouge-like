@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6655397727253865147}
   - component: {fileID: 7066527292106416050}
   - component: {fileID: 7510286746494074055}
+  - component: {fileID: 4708170726597328121}
   - component: {fileID: 6785503471740453260}
   - component: {fileID: 8100846029046438405}
   - component: {fileID: 2860713394936549488}
@@ -114,8 +115,6 @@ MonoBehaviour:
   jumpForce: 0
   dashForce: 0
   body: {fileID: 6785503471740453260}
-  direction: {x: 0, y: 0, z: 0}
-  Gravity: -9.8
 --- !u!114 &7510286746494074055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +128,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   classType: 0
+  inputVector: {x: 0, y: 0}
+--- !u!114 &4708170726597328121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223462146231640634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9674ac697b1abcf428cb9d091f77a3d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RougeAnimator
+  playercontroller: {fileID: 7510286746494074055}
   animator: {fileID: 2860713394936549488}
 --- !u!50 &6785503471740453260
 Rigidbody2D:
