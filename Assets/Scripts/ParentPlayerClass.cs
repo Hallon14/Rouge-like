@@ -43,6 +43,7 @@ public class ParentPlayerClass : MonoBehaviour
     {
         direction.y += Gravity * Time.deltaTime;
         body.AddForce(direction * Time.deltaTime);
+        
     }
 
 }

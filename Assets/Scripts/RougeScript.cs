@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,7 +9,7 @@ public class RougeScript : ParentPlayerClass
         MaxHeath = 100;
         MaxMana = 100;
         MoveSpeed = 10;
-        jumpForce = 250f;
+        jumpForce = 350f;
         dashForce = 100f;
     }
 }
