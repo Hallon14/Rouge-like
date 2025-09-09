@@ -8,6 +8,7 @@ public class RougeScript : ParentPlayerClass
         MaxHeath = 100;
         MaxMana = 100;
         MoveSpeed = 10;
-        jumpForce = 5f;
+        jumpForce = 250f;
+        dashForce = 100f;
     }
 }

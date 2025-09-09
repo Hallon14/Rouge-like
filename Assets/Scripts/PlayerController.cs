@@ -1,3 +1,4 @@
+using System.Numerics;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -7,10 +8,16 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private ClassType classType;
     private RougeScript rougeScript;
+    private BruiserScript bruiserScript;
+    private MageScript mageScript;
+    private PriestScript priestScript;
 
     void Awake()
     {
         rougeScript = GetComponent<RougeScript>();
+        bruiserScript = GetComponent<BruiserScript>();
+        mageScript = GetComponent<MageScript>();
+        priestScript = GetComponent<PriestScript>();
     } 
 
     public void Jump(InputAction.CallbackContext context)
@@ -19,13 +26,38 @@ public class PlayerController : MonoBehaviour
         {
             switch (classType)
             {
+                case ClassType.BRUISER:
+                    bruiserScript.body.AddForce(UnityEngine.Vector3.up * bruiserScript.jumpForce);
+                    return;
+
+                case ClassType.ROUGE:
+                    rougeScript.body.AddForce(UnityEngine.Vector3.up * rougeScript.jumpForce);
+                    return;
+
+                case ClassType.MAGE:
+                    mageScript.body.AddForce(UnityEngine.Vector3.up * mageScript.jumpForce);
+                    return;
+
+                case ClassType.PRIEST:
+                    priestScript.body.AddForce(UnityEngine.Vector3.up * priestScript.jumpForce);
+                    return;
+            }
+        }
+
+        }
+
+    public void Dash(InputAction.CallbackContext context)
+    {
+    if (context.performed)
+        {
+            switch (classType)
+            {
                 //case ClassType.BRUISER:
                     //rougeScript.direction.y = rougeScript.jumpForce * Time.deltaTime;
                     //return;
 
                 case ClassType.ROUGE:
-                    rougeScript.direction = Vector3.up * rougeScript.jumpForce;
-                    Debug.Log("Hopp");
+                    rougeScript.body.AddForce(UnityEngine.Vector3.right * rougeScript.dashForce);
                     return;
 
                 //case ClassType.MAGE:
@@ -37,11 +69,5 @@ public class PlayerController : MonoBehaviour
                     //return;
             }
         }
-
-        }
-
-    public void Dash()
-    {
-        Debug.Log("Dashed");
     }
 }

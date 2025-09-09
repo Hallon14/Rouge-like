@@ -9,11 +9,20 @@ public class ParentPlayerClass : MonoBehaviour
     public float MaxMana;
     public float MoveSpeed;
     public float jumpForce;
+    public float dashForce;
+
 
 
     // Physics
+
+    public Rigidbody2D body;
     public UnityEngine.Vector3 direction;
     public float Gravity = -9.8f;
+
+    void Awake()
+    {
+        body = GetComponent<Rigidbody2D>();
+    }
 
     public virtual void BasicAttack()
     {
@@ -32,8 +41,8 @@ public class ParentPlayerClass : MonoBehaviour
 
     public void Update()
     {
-        direction.y = Gravity * Time.deltaTime;
-        transform.position += direction * Time.deltaTime;
+        direction.y += Gravity * Time.deltaTime;
+        body.AddForce(direction * Time.deltaTime);
     }
 
 }
