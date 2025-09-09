@@ -7,9 +7,18 @@
             "id": "e1d90adf-0b34-47d7-b31c-8ef4fbd1968b",
             "actions": [
                 {
-                    "name": "New action",
+                    "name": "Jump",
                     "type": "Button",
                     "id": "10ab2b4f-4869-48e0-9d1b-4445df120170",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Dash",
+                    "type": "Button",
+                    "id": "d157715b-0120-489c-98fc-a1a6b5258c0f",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -20,11 +29,22 @@
                 {
                     "name": "",
                     "id": "87f84fc4-0323-4ffc-b421-ee35f8f676bb",
-                    "path": "",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "New action",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8428f827-e556-4c42-aa92-04d072b13995",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
