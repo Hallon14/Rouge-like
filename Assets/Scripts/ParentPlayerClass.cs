@@ -12,13 +12,8 @@ public class ParentPlayerClass : MonoBehaviour
     public float dashForce;
 
 
-
-    // Physics
-
     public Rigidbody2D body;
   
-
-
     void Awake()
     {
         body = GetComponent<Rigidbody2D>();

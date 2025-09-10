@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private ClassType classType;
     private PlayerInputActions playerInputActions;
+    
     private RougeScript rougeScript;
     private BruiserScript bruiserScript;
     private MageScript mageScript;

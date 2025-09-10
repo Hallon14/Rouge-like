@@ -27,12 +27,12 @@ public class RougeAnimator : MonoBehaviour
             animator.SetBool("IsRunning", true);
         }
 
-        if (direction.y < 0)
+        if (direction.y == 0)
         {
-            animator.SetBool("IsFalling", true);
+            animator.SetBool("IsFalling", false);
             animator.SetBool("IsJumping", false);
         }
-        else if (direction.y > 0)
+        else if (direction.y > 0.5)
         {
             animator.SetBool("IsFalling", false);
             animator.SetBool("IsJumping", true);
@@ -40,7 +40,7 @@ public class RougeAnimator : MonoBehaviour
         else
         {
             animator.SetBool("IsJumping", false);
-            animator.SetBool("IsFalling", false);
+            animator.SetBool("IsFalling", true);
             
         }
     }
