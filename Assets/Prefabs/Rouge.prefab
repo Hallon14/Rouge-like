@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9043386448277169058}
   - component: {fileID: 6655397727253865147}
-  - component: {fileID: 7066527292106416050}
   - component: {fileID: 4933186574518256930}
   - component: {fileID: 4708170726597328121}
   - component: {fileID: 6785503471740453260}
@@ -96,25 +95,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7066527292106416050
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 223462146231640634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b8aef38fb832f64cbfdadff2f0b42d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::RougeScript
-  classType: 0
-  MaxHeath: 0
-  MaxMana: 0
-  MoveSpeed: 0
-  jumpForce: 0
-  dashForce: 0
-  body: {fileID: 6785503471740453260}
 --- !u!114 &4933186574518256930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +108,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RougeController
   classType: 0
+  classData: {fileID: 11400000, guid: b6795ffa09d55b943be27a88f2769fc4, type: 2}
+  body: {fileID: 6785503471740453260}
   inputVector: {x: 0, y: 0}
 --- !u!114 &4708170726597328121
 MonoBehaviour:
@@ -141,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9674ac697b1abcf428cb9d091f77a3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RougeAnimator
-  playercontroller: {fileID: 0}
+  playercontroller: {fileID: 4933186574518256930}
   animator: {fileID: 2860713394936549488}
 --- !u!50 &6785503471740453260
 Rigidbody2D:
@@ -151,7 +133,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 223462146231640634}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

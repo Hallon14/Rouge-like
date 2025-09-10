@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42ed0e84f07badf4ea1b2b765bbb77a0, type: 3}
   m_Name: RougeData
   m_EditorClassIdentifier: Assembly-CSharp::UnitData
+  moveSpeed: 10
+  jumpForce: 10

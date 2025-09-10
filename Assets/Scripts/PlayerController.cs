@@ -5,18 +5,19 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private ClassType classType;
+    [SerializeField] private Unitdata classData;
+    [SerializeField] private Rigidbody2D body;
     private PlayerInputActions playerInputActions;
-    
 
-    private float gravity = -9.8f;
-    private UnityEngine.Vector3 direction;
+
+    private Vector3 gravity = new Vector3(0f, -9.8f);
+    private Vector3 direction = Vector3.zero;
     public Vector2 inputVector;
-    private Rigidbody2D body;
+    
 
 
     void Awake()
     {
-        body = FindAnyObjectByType<Rigidbody2D>();
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
         playerInputActions.Player.Jump.performed += Jump;
@@ -24,39 +25,42 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        direction.y = gravity * Time.deltaTime;
-        body.AddForceY(direction.y * Time.deltaTime);
+        inputVector = playerInputActions.Player.Movement.ReadValue<Vector2>().normalized;
     }
 
-    void FixedUpdate()
+    public void FixedUpdate()
     {
-        inputVector = playerInputActions.Player.Movement.ReadValue<Vector2>();
-
-
+        direction = gravity * Time.deltaTime;
+        Debug.Log("direction: " + direction);
+        body.MovePosition(transform.position += direction * Time.deltaTime);
+        // Debug.Log("direction: " + direction);
+        flipSprite();
+        
+    }
+    
+    public void flipSprite()
+    {
         //Flipping Sprite - input less than 0 indicates movement to the left
         if (inputVector.x < 0)
         {
-            transform.localScale = new Vector3(-3, 3, 3);
+            transform.localScale = new Vector3(-3, 3, 3); // ATM set to 3 as that makes Rouge in good size, change this later pls
         }
         if (inputVector.x > 0)
         {
             transform.localScale = new Vector3(3, 3, 3);
         }
-
-        //Movement
-        body.linearVelocityX = inputVector.x;
     }
 
-    public void Jump(InputAction.CallbackContext context)
+
+    public virtual void Jump(InputAction.CallbackContext context)
     {
         if (context.performed)
-            body.linearVelocityY = 150f;
-
-
+            body.linearVelocityY = classData.jumpForce;  
     }
 
-    public void Dash(InputAction.CallbackContext context)
+    public virtual void Dash(InputAction.CallbackContext context)
     {
 
     }
+    
 }

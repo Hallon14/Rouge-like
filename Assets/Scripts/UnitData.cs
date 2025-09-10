@@ -1,7 +1,8 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "UnitData", menuName = "Scriptable Objects/UnitData")]
-public class UnitData : ScriptableObject
+[CreateAssetMenu]
+public class Unitdata : ScriptableObject
 {
-    
+    public float moveSpeed = 10f;
+    public float jumpForce = 50;
 }
