@@ -11,14 +11,6 @@ public class ParentPlayerClass : MonoBehaviour
     public float jumpForce;
     public float dashForce;
 
-
-    public Rigidbody2D body;
-  
-    void Awake()
-    {
-        body = GetComponent<Rigidbody2D>();
-    }
-
     public virtual void BasicAttack()
     {
         Debug.Log("Auto-Attack!");
