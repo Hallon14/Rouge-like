@@ -31,9 +31,7 @@ public class PlayerController : MonoBehaviour
     public void FixedUpdate()
     {
         direction = gravity * Time.deltaTime;
-        Debug.Log("direction: " + direction);
-        body.MovePosition(transform.position += direction * Time.deltaTime);
-        // Debug.Log("direction: " + direction);
+        body.MovePosition(transform.position += direction * Time.deltaTime * 50);
         flipSprite();
         
     }
